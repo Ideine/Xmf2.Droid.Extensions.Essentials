@@ -4,9 +4,9 @@ using Android.Net;
 
 namespace Xmf2.Droid.Extensions.Essentials.Share
 {
-    public class ShareExtensions
+    public static class ShareExtensions
     {
-        public bool CanMakePhoneCall
+        public static bool CanMakePhoneCall
         {
             get
             {
@@ -18,7 +18,7 @@ namespace Xmf2.Droid.Extensions.Essentials.Share
             }
         }
 
-        public bool CanSendEmail
+        public static bool CanSendEmail
         {
             get
             {
@@ -32,7 +32,7 @@ namespace Xmf2.Droid.Extensions.Essentials.Share
             }
         }
 
-        public bool CanSendSms
+        public static bool CanSendSms
         {
             get
             {
