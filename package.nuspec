@@ -19,6 +19,6 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="Xmf2.Droid.Extensions.Essentials\bin\Release\monoandroid12.0\*.dll;Xmf2.Droid.Extensions.Essentials\bin\Release\monoandroid12.0\*.pdb" target="lib\monoandroid12.0"/>
+        <file src="Xmf2.Droid.Extensions.Essentials\bin\Release\*.dll;Xmf2.Droid.Extensions.Essentials\bin\Release\*.pdb" target="lib\monoandroid12.0"/>
     </files>
 </package>
