@@ -1,0 +1,43 @@
+resources:
+  repositories:
+    - repository: self
+      checkoutOptions:
+        clean: true
+        fetchDepth: 5
+        lfs: false
+
+trigger:
+  - master
+
+name: Xmf2.Droid.Extensions.Essentials-CI-$(Date:yyyyMMdd)$(Rev:.r)
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+
+  - task: NuGetCommand@2
+    inputs:
+      command: 'restore'
+      restoreSolution: 'Xmf2.Droid.Extensions.Essentials.sln'
+
+  - task: VSBuild@1
+    displayName: Build Package
+    inputs:
+      solution: Xmf2.Droid.Extensions.Essentials.sln
+      platform: 'any cpu'
+      configuration: 'release'
+      maximumCpuCount: true
+    condition: succeeded()
+
+  - task: NuGetCommand@2
+    inputs:
+      command: 'pack'
+      packagesToPack: 'package.nuspec'
+      versioningScheme: 'off'
+
+  - task: PublishBuildArtifacts@1
+    displayName: "Publish Artifact: drop"
+    inputs:
+      PathtoPublish: '$(build.artifactstagingdirectory)'
+    condition: succeeded()
